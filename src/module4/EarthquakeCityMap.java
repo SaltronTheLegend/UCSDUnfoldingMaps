@@ -35,7 +35,7 @@ public class EarthquakeCityMap extends PApplet {
 	private static final long serialVersionUID = 1L;
 
 	// IF YOU ARE WORKING OFFILINE, change the value of this variable to true
-	private static final boolean offline = false;
+	private static final boolean offline = true;
 	
 	/** This is where to find the local tiles, for working without an Internet connection */
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
@@ -146,20 +146,22 @@ public class EarthquakeCityMap extends PApplet {
 		fill(255);
 		ellipse(50, 130, 10, 10);
 		rect(45, 150, 10, 10);
-		//fill(color(255, 0, 0));
-		//ellipse(50, 165, 15, 15);
-		//fill(color(255, 255, 0));
-		//ellipse(50, 205, 10, 10);
-		//fill(color(0, 0, 255));
-		//ellipse(50, 245, 5, 5);
+		
+		fill(color(255, 255, 0));
+		ellipse(50, 205, 12, 12);
+		fill(color(0, 0, 255));
+		ellipse(50, 225, 12, 12);
+		fill(color(255, 0, 0));
+		ellipse(50, 245, 12, 12);
 		
 		fill(0, 0, 0);
 		text("City Marker", 75, 105);
 		text("Land Quake", 75, 128);
 		text("Ocean Quake", 75, 153);
-		//text("5.0+ Magnitude", 75, 125);
-		//text("4.0+ Magnitude", 75, 175);
-		//text("Below 4.0", 75, 225);
+		text("Size ~ Magnitude", 45, 175);
+		text("Shallow", 75, 205);
+		text("Intermediate", 75, 225);
+		text("Deep", 75, 245);
 	}
 
 	
@@ -178,6 +180,8 @@ public class EarthquakeCityMap extends PApplet {
 		// If isInCountry ever returns true, isLand should return true.
 		for (Marker m : countryMarkers) {
 			// TODO: Finish this method using the helper method isInCountry
+			if(this.isInCountry(earthquake, m))
+				return true;
 			
 		}
 		
